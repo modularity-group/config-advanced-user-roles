@@ -6,7 +6,7 @@ Extend the default user roles and improve the role system.
 
 ---
 
-Version: 1.1.0
+Version: 1.2.0
 
 Author: Matze @ https://modularity.group
 
@@ -14,13 +14,17 @@ License: MIT
 
 ---
 
-- adds aditional role 'developer' as a copy of 'administrator' butwithout ability to update core or install/update plugins and themes
-- grant 'editor' role additional caps by default: manage users, manage menus and manage privacy options
+- adds additional role 'developer' as a copy of 'administrator' but without ability to update core or install/update plugins and themes. jusr activate
+- adds additional role 'manager' as a copy of 'editor' but with additional caps: manage users, manage menus and manage privacy options
 - disallows non-admins to create or to uplevel administrator-users
 - register a custom capability 'manage_fields' to ACF for managing fields
 - add specific capability 'manage_fields' to 'administrator' and 'developer' role
+- delete contributor role
 
 **changelog**
+
+1.2.0
+- introduce manager-role with
 
 1.1.0
 - improve developer role creation process

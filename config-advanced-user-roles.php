@@ -17,14 +17,29 @@ add_action( 'admin_init', function() {
   $wp_roles->remove_cap( 'developer', 'update_themes' );
   $wp_roles->remove_cap( 'developer', 'update_core' );
 
-  $wp_roles->add_cap( 'editor', 'edit_theme_options' );
-  $wp_roles->add_cap( 'editor', 'create_users' );
-  $wp_roles->add_cap( 'editor', 'edit_users' );
-  $wp_roles->add_cap( 'editor', 'list_users' );
-  $wp_roles->add_cap( 'editor', 'promote_users' );
-  $wp_roles->add_cap( 'editor', 'manage_privacy_options' );
-  $wp_roles->add_cap( 'editor', 'delete_users' );
-  $wp_roles->add_cap( 'editor', 'remove_users' );
+  add_role( 'manager', 'Manager', get_role( 'editor' )->capabilities );
+
+  $wp_roles->add_cap( 'manager', 'edit_theme_options' );
+  $wp_roles->add_cap( 'manager', 'list_users' );
+  $wp_roles->add_cap( 'manager', 'create_users' );
+  $wp_roles->add_cap( 'manager', 'edit_users' );
+  $wp_roles->add_cap( 'manager', 'delete_users' );
+  $wp_roles->add_cap( 'manager', 'remove_users' );
+  $wp_roles->add_cap( 'manager', 'promote_users' );
+  $wp_roles->add_cap( 'manager', 'manage_privacy_options' );
+
+  // revoke from prior version setting BEGIN
+  $wp_roles->remove_cap( 'editor', 'edit_theme_options' );
+  $wp_roles->remove_cap( 'editor', 'list_users' );
+  $wp_roles->remove_cap( 'editor', 'create_users' );
+  $wp_roles->remove_cap( 'editor', 'edit_users' );
+  $wp_roles->remove_cap( 'editor', 'delete_users' );
+  $wp_roles->remove_cap( 'editor', 'remove_users' );
+  $wp_roles->remove_cap( 'editor', 'promote_users' );
+  $wp_roles->remove_cap( 'editor', 'manage_privacy_options' );
+  // revoke END (can be removed later)
+
+  remove_role( 'contributer' );
 
 });
 
