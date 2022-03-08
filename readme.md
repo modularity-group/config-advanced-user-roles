@@ -6,7 +6,7 @@ Extend the default user roles and improve the role system.
 
 ---
 
-Version: 1.2.0
+Version: 1.2.1
 
 Author: Matze @ https://modularity.group
 
@@ -23,8 +23,9 @@ License: MIT
 
 **changelog**
 
-1.2.0
-- introduce manager-role with
+1.2.1
+- set editor role to standard capabilities 
+- introduce manager-role with capabilities to mangage users and nav menus
 
 1.1.0
 - improve developer role creation process
