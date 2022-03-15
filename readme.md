@@ -14,7 +14,7 @@ License: MIT
 
 ---
 
-- adds additional role 'developer' as a copy of 'administrator' but without ability to update core or install/update plugins and themes. jusr activate
+- adds additional role 'developer' as a copy of 'administrator' but without ability to install and theme update themes. Update core or install/update plugins and themes is only allowed if `wp_get_environment_type() == 'development'`
 - adds additional role 'manager' as a copy of 'editor' but with additional caps: manage users, manage menus and manage privacy options
 - disallows non-admins to create or to uplevel administrator-users
 - register a custom capability 'manage_fields' to ACF for managing fields
@@ -25,7 +25,7 @@ License: MIT
 **changelog**
 
 1.4.0
-- allow role `developer` to update core, install and update plugins when `wp_get_environment_type() == 'development'`
+- allow role `developer` to update core, install and update plugins if `wp_get_environment_type() == 'development'`
 
 1.3.0
 - introduce helper-function `current_user_has_role()`
