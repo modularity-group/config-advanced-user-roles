@@ -6,7 +6,7 @@ Extend the default user roles and improve the role system.
 
 ---
 
-Version: 1.2.1
+Version: 1.4.0
 
 Author: Matze @ https://modularity.group
 
@@ -20,8 +20,15 @@ License: MIT
 - register a custom capability 'manage_fields' to ACF for managing fields
 - add specific capability 'manage_fields' to 'administrator' and 'developer' role
 - delete contributor role
+- add helper function `current_user_has_role($role)` to check if current user has specific role. WPs `current_user_can($role)` works also but is not ideal  
 
 **changelog**
+
+1.4.0
+- allow role `developer` to update core, install and update plugins when `wp_get_environment_type() == 'development'`
+
+1.3.0
+- introduce helper-function `current_user_has_role()`
 
 1.2.1
 - set editor role to standard capabilities 

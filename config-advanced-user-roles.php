@@ -17,6 +17,12 @@ add_action( 'admin_init', function() {
   $wp_roles->remove_cap( 'developer', 'update_themes' );
   $wp_roles->remove_cap( 'developer', 'update_core' );
 
+  if(wp_get_environment_type() == 'development'){
+    $wp_roles->add_cap( 'developer', 'install_plugins' );
+    $wp_roles->add_cap( 'developer', 'update_plugins' );
+    $wp_roles->add_cap( 'developer', 'update_core' );
+  }
+
   add_role( 'manager', 'Manager', get_role( 'editor' )->capabilities );
 
   $wp_roles->add_cap( 'manager', 'edit_theme_options' );
@@ -99,3 +105,15 @@ add_filter( 'map_meta_cap', function( $caps, $cap, $user_id, $args ){
   }
   return $caps;
 }, 10, 4);
+
+if(!function_exists('current_user_has_role')){
+  function current_user_has_role($role){
+    if( is_user_logged_in() ){
+      $get_user_data = get_userdata(get_current_user_id());
+      $get_roles = implode($get_user_data->roles);
+      if(in_array($role,$get_user_data->roles)){
+        return true;
+      }
+    }
+  }
+}
